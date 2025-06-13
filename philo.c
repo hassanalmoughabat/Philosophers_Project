@@ -71,21 +71,25 @@ int main(int argc, char **argv)
 {
 	t_philo *philos;
 	t_data data;
+	printf("Philosopher Simulation Starting...\n");
 	if (check_args(argc, argv) != 0)
 	{
 		return (1);
 	}
+	printf("Arguments are valid. Initializing data...\n");
 	if (init_data(&data, argc, argv) != 0)
 	{
 		printf("Error: Failed to initialize data.\n");
 		return (1);
 	}
+	printf("Data initialized successfully. Starting philosopher threads...\n");
 	if (start_philosophers(&data) != 0)
 	{
 		printf("Error: Failed to start philosopher threads.\n");
 		cleanup(&data);
 		return (1);
 	}
+	printf("Philosopher threads started successfully. Checking for philosopher death...\n");
 	check_philospher_death(&data);
 	cleanup(&data);
 	return (0);
