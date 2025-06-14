@@ -1,0 +1,75 @@
+Philosopher Simulation Starting...
+Arguments are valid. Initializing data...
+Data initialized successfully. Starting philosopher threads...
+Simulation started at 1749902863632 ms
+Philosopher 1 is starting
+0 1 has taken a fork
+0 1 has taken a fork
+0 1 is eating
+Philosopher 2 is starting
+Philosopher 3 is starting
+0 3 has taken a fork
+0 3 has taken a fork
+0 3 is eating
+Philosopher threads started successfully. Checking for philosopher death...
+Philosopher 5 is starting
+Philosopher 4 is starting
+1 4 has taken a fork
+200 1 is sleeping
+200 5 has taken a fork
+200 3 is sleeping
+200 2 has taken a fork
+200 2 has taken a fork
+200 2 is eating
+200 4 has taken a fork
+200 4 is eating
+400 1 is thinking
+400 1 has taken a fork
+400 4 is sleeping
+400 3 is thinking
+400 3 has taken a fork
+400 3 has taken a fork
+400 3 is eating
+401 2 is sleeping
+401 5 has taken a fork
+401 5 is eating
+601 3 is sleeping
+601 4 is thinking
+601 5 is sleeping
+601 4 has taken a fork
+601 4 has taken a fork
+601 4 is eating
+601 1 has taken a fork
+601 2 is thinking
+601 2 has taken a fork
+601 1 is eating
+801 3 is thinking
+801 4 is sleeping
+801 3 has taken a fork
+801 5 is thinking
+801 1 is sleeping
+801 2 has taken a fork
+801 2 is eating
+801 5 has taken a fork
+801 5 has taken a fork
+801 5 is eating
+1001 4 is thinking
+1001 2 is sleeping
+1001 1 is thinking
+1001 1 has taken a fork
+1001 3 has taken a fork
+1001 3 is eating
+1001 5 is sleeping
+1001 4 has taken a fork
+1001 1 has taken a fork
+1001 1 is eating
+1201 2 is thinking
+1201 5 is thinking
+1201 2 has taken a fork
+1201 4 has taken a fork
+1201 4 is eating
+1201 5 has taken a fork
+1201 2 has taken a fork
+1201 2 is eating
+1401 5 has taken a fork
+1401 5 is eating
