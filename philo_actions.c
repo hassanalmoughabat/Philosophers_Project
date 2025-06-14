@@ -6,7 +6,7 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 16:59:47 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/14 19:14:51 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/14 19:33:27 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,17 +125,13 @@ void	*philosopher_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	
-	// Wait for all threads to be created
 	wait_for_start(philo);
-		
 	pthread_mutex_lock(&philo->data->meal_lock);
 	philo->last_meal = 0;
 	pthread_mutex_unlock(&philo->data->meal_lock);
 	
 	if (philo->data->num_philos == 1)
 		return (handle_single_philo(philo));
-		
-	// Stagger start for even philosophers to avoid deadlock
 	if (philo->id % 2 == 0)
 		usleep(1000);
 		
