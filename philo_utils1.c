@@ -6,7 +6,7 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:34:47 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/14 16:59:25 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/14 19:14:45 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 
 void	print_philo_stat(t_philo *philo, char *status)
 {
+	long long	timestamp;
+
 	pthread_mutex_lock(&philo->data->print_lock);
-	printf("%lld %d %s\n", current_time() - philo->data->start_time,
-		philo->id, status);
+	if (!philo->data->stop)
+	{
+		pthread_mutex_lock(&philo->data->meal_lock);
+		timestamp = current_time() - philo->data->start_time;
+		pthread_mutex_unlock(&philo->data->meal_lock);
+		printf("%lld %d %s\n", timestamp, philo->id, status);
+	}
 	pthread_mutex_unlock(&philo->data->print_lock);
 }
 
@@ -24,7 +31,6 @@ int	start_philosophers(t_data *data)
 {
 	int	i;
 
-	data->start_time = current_time();
 	i = 0;
 	while (i < data->num_philos)
 	{
@@ -36,6 +42,10 @@ int	start_philosophers(t_data *data)
 		}
 		i++;
 	}
+	// Set start time after all threads are created
+	pthread_mutex_lock(&data->meal_lock);
+	data->start_time = current_time();
+	pthread_mutex_unlock(&data->meal_lock);
 	return (0);
 }
 
@@ -43,6 +53,11 @@ void	cleanup(t_data *data)
 {
 	int	i;
 
+	// Set stop flag to ensure all threads exit
+	pthread_mutex_lock(&data->print_lock);
+	data->stop = 1;
+	pthread_mutex_unlock(&data->print_lock);
+	
 	i = 0;
 	while (i < data->num_philos)
 	{

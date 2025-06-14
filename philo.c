@@ -6,7 +6,7 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:40:06 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/14 17:00:35 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/14 19:09:49 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ long long	current_time(void)
 
 int	check_args(int argc, char **argv)
 {
+	int	i;
+	int	j;
+
 	if (argc < 5 || argc > 6)
 	{
 		printf("Error: Wrong number of arguments\n");
@@ -29,16 +32,25 @@ int	check_args(int argc, char **argv)
 		printf("time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n");
 		return (1);
 	}
-	if (atoi(argv[1]) <= 0 || atoi(argv[2]) <= 0
-		|| atoi(argv[3]) <= 0 || atoi(argv[4]) <= 0)
+	i = 1;
+	while (i < argc)
 	{
-		printf("Error: Invalid arguments. All must be positive integers.\n");
-		return (1);
-	}
-	if (argc == 6 && atoi(argv[5]) <= 0)
-	{
-		printf("Error: Number of meals must be positive.\n");
-		return (1);
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+			{
+				printf("Error: Arguments must be positive integers\n");
+				return (1);
+			}
+			j++;
+		}
+		if (atoi(argv[i]) <= 0 || atoi(argv[i]) > 2147483647)
+		{
+			printf("Error: Arguments must be positive integers\n");
+			return (1);
+		}
+		i++;
 	}
 	return (0);
 }
