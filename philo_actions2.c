@@ -6,7 +6,7 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 18:22:17 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/16 18:35:58 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/16 20:33:04 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,6 @@ void	*philosopher_routine(void *arg)
 			break ;
 	}
 	return (NULL);
-}
-
-int	check_meal_count(t_philo *philo)
-{
-	if (philo->data->num_meals == -1)
-		return (0);
-	pthread_mutex_lock(&philo->data->meal_lock);
-	philo->meals_eaten++;
-	if (philo->meals_eaten >= philo->data->num_meals)
-	{
-		pthread_mutex_unlock(&philo->data->meal_lock);
-		return (1);
-	}
-	pthread_mutex_unlock(&philo->data->meal_lock);
-	return (0);
 }
 
 void	*handle_single_philo(t_philo *philo)

@@ -6,11 +6,26 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:00:43 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/16 18:21:00 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/16 20:33:33 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	check_meal_count(t_philo *philo)
+{
+	if (philo->data->num_meals == -1)
+		return (0);
+	pthread_mutex_lock(&philo->data->meal_lock);
+	philo->meals_eaten++;
+	if (philo->meals_eaten >= philo->data->num_meals)
+	{
+		pthread_mutex_unlock(&philo->data->meal_lock);
+		return (1);
+	}
+	pthread_mutex_unlock(&philo->data->meal_lock);
+	return (0);
+}
 
 static int	init_mutexes(t_data *data)
 {
