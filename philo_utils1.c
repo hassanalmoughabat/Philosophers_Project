@@ -6,7 +6,7 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:34:47 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/14 19:36:14 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/16 18:21:33 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	cleanup(t_data *data)
 	pthread_mutex_lock(&data->print_lock);
 	data->stop = 1;
 	pthread_mutex_unlock(&data->print_lock);
-	
 	i = 0;
 	while (i < data->num_philos)
 	{

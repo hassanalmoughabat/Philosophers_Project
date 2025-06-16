@@ -6,7 +6,7 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:40:06 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/14 19:35:43 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/16 18:19:59 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@ long long	current_time(void)
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
+static void	error_print(int flag)
+{
+	if (flag == 0)
+	{
+		printf("Error: Wrong number of arguments\n");
+		printf("Usage: ./philo number_of_philosophers time_to_die ");
+		printf("time_to_eat time_to_sleep"
+			"[number_of_times_each_philosopher_must_eat]\n");
+	}
+	else if (flag == 1)
+		printf("Error: Arguments must be positive integers\n");
+}
+
 int	check_args(int argc, char **argv)
 {
 	int	i;
@@ -27,9 +40,7 @@ int	check_args(int argc, char **argv)
 
 	if (argc < 5 || argc > 6)
 	{
-		printf("Error: Wrong number of arguments\n");
-		printf("Usage: ./philo number_of_philosophers time_to_die ");
-		printf("time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n");
+		error_print(0);
 		return (1);
 	}
 	i = 1;
@@ -38,17 +49,13 @@ int	check_args(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (argv[i][j] < '0' || argv[i][j] > '9')
+			if (argv[i][j] < '0' || argv[i][j] > '9'
+				|| (atoi(argv[i]) <= 0 || atoi(argv[i]) > 2147483647))
 			{
 				printf("Error: Arguments must be positive integers\n");
 				return (1);
 			}
 			j++;
-		}
-		if (atoi(argv[i]) <= 0 || atoi(argv[i]) > 2147483647)
-		{
-			printf("Error: Arguments must be positive integers\n");
-			return (1);
 		}
 		i++;
 	}

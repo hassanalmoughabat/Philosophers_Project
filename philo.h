@@ -6,7 +6,7 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 16:00:00 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/14 17:01:07 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/16 18:34:30 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,14 @@ void		cleanup(t_data *data);
 
 // philo_actions.c
 void		*philosopher_routine(void *arg);
-
+int			wait_for_start(t_philo *philo);
+void		*handle_single_philo(t_philo *philo);
+int			check_meal_count(t_philo *philo);
+void		philo_sleep(t_philo *philo);
+void		philo_eat(t_philo *philo);
+void		put_forks(t_philo *philo);
+void		take_forks(t_philo *philo);
+// int			check_death(t_philo *philo);
 // philo_monitor.c
 int			check_philospher_death(t_data *data);
 

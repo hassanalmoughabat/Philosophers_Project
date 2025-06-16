@@ -6,7 +6,7 @@
 #    By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/14 16:00:00 by hal-moug          #+#    #+#              #
-#    Updated: 2025/06/14 17:01:15 by hal-moug         ###   ########.fr        #
+#    Updated: 2025/06/16 18:35:31 by hal-moug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS = philo.c \
        philo_init.c \
        philo_utils1.c \
        philo_actions.c \
-       philo_monitor.c
+       philo_monitor.c \
+	   philo_actions2.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,10 +6,9 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:00:43 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/14 18:51:10 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/16 18:21:00 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "philo.h"
 
@@ -28,7 +27,7 @@ static int	init_mutexes(t_data *data)
 	}
 	pthread_mutex_init(&data->print_lock, NULL);
 	pthread_mutex_init(&data->meal_lock, NULL);
-	return (0);	
+	return (0);
 }
 
 static void	init_philosophers(t_data *data)
