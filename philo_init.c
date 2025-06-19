@@ -6,7 +6,7 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:00:43 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/16 20:33:33 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/19 21:42:34 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ static void	init_philosophers(t_data *data)
 
 int	init_data(t_data *data, int argc, char **argv)
 {
-	data->num_philos = atoi(argv[1]);
-	data->time_to_die = atoi(argv[2]);
-	data->time_to_eat = atoi(argv[3]);
-	data->time_to_sleep = atoi(argv[4]);
+	data->num_philos = ft_atoi(argv[1]);
+	data->time_to_die = ft_atoi(argv[2]);
+	data->time_to_eat = ft_atoi(argv[3]);
+	data->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
-		data->num_meals = atoi(argv[5]);
+		data->num_meals = ft_atoi(argv[5]);
 	else
 		data->num_meals = -1;
 	data->start_time = 0;

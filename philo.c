@@ -6,11 +6,37 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:40:06 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/16 18:19:59 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/19 21:44:22 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	sign;
+	int	result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
+}
 
 long long	current_time(void)
 {
@@ -50,7 +76,7 @@ int	check_args(int argc, char **argv)
 		while (argv[i][j])
 		{
 			if (argv[i][j] < '0' || argv[i][j] > '9'
-				|| (atoi(argv[i]) <= 0 || atoi(argv[i]) > 2147483647))
+				|| (ft_atoi(argv[i]) <= 0 || ft_atoi(argv[i]) > 2147483647))
 			{
 				printf("Error: Arguments must be positive integers\n");
 				return (1);
