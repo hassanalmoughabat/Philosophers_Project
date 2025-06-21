@@ -6,7 +6,7 @@
 /*   By: hal-moug <hal-moug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:00:16 by hal-moug          #+#    #+#             */
-/*   Updated: 2025/06/14 19:14:20 by hal-moug         ###   ########.fr       */
+/*   Updated: 2025/06/16 18:31:43 by hal-moug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	check_all_ate(t_data *data)
 			all_ate = 0;
 		pthread_mutex_unlock(&data->meal_lock);
 		if (!all_ate)
-			break;
+			break ;
 		i++;
 	}
 	return (all_ate);
@@ -66,7 +66,6 @@ static int	check_death(t_data *data)
 		current = current_time() - start;
 		time_since_meal = current - data->philos[i].last_meal;
 		pthread_mutex_unlock(&data->meal_lock);
-		
 		if (time_since_meal > data->time_to_die)
 			return (philosopher_died(data, i));
 		i++;
@@ -74,7 +73,7 @@ static int	check_death(t_data *data)
 	return (0);
 }
 
-int check_philospher_death(t_data *data)
+int	check_philospher_death(t_data *data)
 {
 	while (1)
 	{
